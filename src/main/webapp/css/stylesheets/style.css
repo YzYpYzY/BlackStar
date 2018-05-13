@@ -1,0 +1,679 @@
+/* line 5, ../sass/style.scss */
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+/* line 12, ../sass/style.scss */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 20, ../sass/style.scss */
+html {
+  display: flex;
+  flex-flow: column;
+  justify-content: stretch;
+  height: 100%;
+  cursor: default;
+}
+
+/* line 27, ../sass/style.scss */
+body {
+  display: flex;
+  flex-flow: row;
+  align-items: stretch;
+  height: 100%;
+  margin: 0;
+  background: url("../../images/wallpaper.png") no-repeat top left;
+  color: white;
+}
+
+/* line 37, ../sass/style.scss */
+.btn, .form-btn, .goToRegister {
+  align-self: center;
+  min-width: 6rem;
+  padding: .5rem 1.5rem;
+  margin: .5rem 0;
+  border: 0.05rem solid #DF9E5E;
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-decoration: none;
+  text-align: center;
+}
+/* line 46, ../sass/style.scss */
+.btn:hover, .form-btn:hover, .goToRegister:hover {
+  background: #DF9E5E;
+  color: white;
+}
+
+/* line 51, ../sass/style.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 55, ../sass/style.scss */
+.l-leftbar {
+  display: flex;
+  flex-flow: column;
+  flex-shrink: 0;
+  width: 13rem;
+  height: 100%;
+  background-color: black;
+  color: white;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+/* line 65, ../sass/style.scss */
+.l-brand {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 2rem 0;
+  font-size: 2rem;
+  font-family: 'Pacifico', cursive;
+}
+/* line 72, ../sass/style.scss */
+.l-brand .logo {
+  height: 6rem;
+  width: auto;
+  padding: 1rem;
+}
+
+/* line 80, ../sass/style.scss */
+.l-navigation {
+  display: flex;
+  flex-flow: column;
+  align-self: center;
+  flex-grow: 1;
+  padding: 3rem 0;
+  font-size: 1.3rem;
+}
+/* line 87, ../sass/style.scss */
+.l-navigation .nav-link {
+  padding: .5rem 1.5rem;
+  margin: 0.5rem 0;
+  text-align: center;
+  border: 0.05rem solid transparent;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  color: white;
+}
+/* line 95, ../sass/style.scss */
+.l-navigation .nav-link:hover {
+  color: #DF9E5E;
+  border-color: #DF9E5E;
+}
+/* line 99, ../sass/style.scss */
+.l-navigation .nav-link.active {
+  color: #DF9E5E;
+}
+
+/* line 105, ../sass/style.scss */
+.l-language-switch {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+/* line 111, ../sass/style.scss */
+.l-language-switch .language-select {
+  padding: 0.5rem;
+  margin: 0 0.75rem;
+  border: 0.05rem solid transparent;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  color: white;
+}
+/* line 118, ../sass/style.scss */
+.l-language-switch .language-select.active {
+  color: #DF9E5E;
+}
+/* line 121, ../sass/style.scss */
+.l-language-switch .language-select:hover {
+  color: #DF9E5E;
+  border-color: #DF9E5E;
+}
+
+/* line 128, ../sass/style.scss */
+.l-signIn {
+  display: flex;
+  flex-flow: row;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  border: 0.05rem solid transparent;
+  border-radius: 0.25rem;
+  color: white;
+  text-decoration: none;
+}
+/* line 141, ../sass/style.scss */
+.l-signIn:hover {
+  color: #DF9E5E;
+  border-color: #DF9E5E;
+}
+/* line 145, ../sass/style.scss */
+.l-signIn .fa {
+  margin-right: 1rem;
+  color: #DF9E5E;
+}
+
+/* line 150, ../sass/style.scss */
+.l-user {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+/* line 156, ../sass/style.scss */
+.l-user .l-user-welcome {
+  padding: 0.25rem 0.5rem;
+  font-size: 1.2rem;
+}
+/* line 160, ../sass/style.scss */
+.l-user .l-user-deco {
+  padding: 0.25rem 0.5rem;
+  border: 0.05rem solid transparent;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.82);
+}
+/* line 165, ../sass/style.scss */
+.l-user .l-user-deco:hover {
+  border-color: #DF9E5E;
+}
+
+/* line 170, ../sass/style.scss */
+.basket {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  padding: 1rem;
+  border: 0.05rem solid transparent;
+  border-radius: 0.25rem;
+}
+/* line 179, ../sass/style.scss */
+.basket .fa {
+  position: relative;
+  font-size: 1.5rem;
+}
+/* line 183, ../sass/style.scss */
+.basket .nbProducts {
+  padding: 0.05rem 0.1rem;
+  margin: 0 1rem;
+  position: absolute;
+  top: -0.5rem;
+  right: -1.7rem;
+  font-style: normal;
+  font-size: 1rem;
+  color: black;
+  background-color: #DF9E5E;
+  border-radius: 0.25rem;
+}
+/* line 195, ../sass/style.scss */
+.basket:hover {
+  border-color: #DF9E5E;
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* line 209, ../sass/style.scss */
+.l-basket {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  flex-shrink: 0;
+  width: 13rem;
+  background-color: #2e2e2e;
+  transition: width ease 1s;
+  overflow-x: hidden;
+}
+/* line 218, ../sass/style.scss */
+.l-basket .l-basket-title {
+  animation: fadein 1s linear 0s 1;
+}
+/* line 219, ../sass/style.scss */
+.l-basket .l-basket-products {
+  animation: fadein 1s linear 0s 1;
+}
+/* line 220, ../sass/style.scss */
+.l-basket .l-basket-validate-btn {
+  animation: fadein 1s linear 0s 1;
+}
+/* line 221, ../sass/style.scss */
+.l-basket .promotion-details {
+  animation: fadein 1s linear 0s 1;
+}
+/* line 222, ../sass/style.scss */
+.l-basket .l-basket-totalPrice {
+  animation: fadein 1s linear 0s 1;
+}
+/* line 223, ../sass/style.scss */
+.l-basket.collapse {
+  width: 0;
+}
+/* line 225, ../sass/style.scss */
+.l-basket.collapse .l-basket-title {
+  animation: fadeout 1s linear 0s 1;
+}
+/* line 226, ../sass/style.scss */
+.l-basket.collapse .l-basket-products {
+  animation: fadeout 1s linear 0s 1;
+}
+/* line 227, ../sass/style.scss */
+.l-basket.collapse .l-basket-validate-btn {
+  animation: fadeout 1s linear 0s 1;
+}
+/* line 228, ../sass/style.scss */
+.l-basket.collapse .promotion-details {
+  animation: fadeout 1s linear 0s 1;
+}
+/* line 229, ../sass/style.scss */
+.l-basket.collapse .l-basket-totalPrice {
+  animation: fadeout 1s linear 0s 1;
+}
+
+/* line 232, ../sass/style.scss */
+.l-basket-title {
+  padding: 2rem;
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+}
+
+/* line 239, ../sass/style.scss */
+.l-basket-products {
+  display: flex;
+  flex-flow: column;
+  max-height: 70%;
+  overflow-y: scroll;
+}
+/* line 244, ../sass/style.scss */
+.l-basket-products::-webkit-scrollbar {
+  width: 0.5rem;
+}
+/* line 248, ../sass/style.scss */
+.l-basket-products::-webkit-scrollbar-track {
+  background-color: rgba(223, 158, 94, 0.2);
+}
+/* line 252, ../sass/style.scss */
+.l-basket-products::-webkit-scrollbar-thumb {
+  background-color: #DF9E5E;
+  border-radius: 1rem;
+  outline: 0 solid black;
+}
+
+/* line 258, ../sass/style.scss */
+.l-basket-product {
+  display: flex;
+  flex-flow: column;
+  align-self: stretch;
+  padding: 1rem;
+  position: relative;
+  flex-shrink: 0;
+}
+/* line 265, ../sass/style.scss */
+.l-basket-product:first-of-type:before, .l-basket-product:after {
+  content: '';
+  height: 0.05rem;
+  width: 90%;
+  position: absolute;
+  left: 5%;
+  background-color: #818181;
+}
+/* line 274, ../sass/style.scss */
+.l-basket-product:after {
+  bottom: 0rem;
+}
+/* line 277, ../sass/style.scss */
+.l-basket-product:first-of-type:before {
+  top: 0;
+}
+
+/* line 283, ../sass/style.scss */
+.l-basket-product-headLine, .l-basket-product-secondLine {
+  display: flex;
+  flex-flow: row;
+  flex-grow: 1;
+  align-items: center;
+}
+/* line 288, ../sass/style.scss */
+.l-basket-product-headLine .fa, .l-basket-product-secondLine .fa {
+  color: #DF9E5E;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: 0.05rem solid transparent;
+}
+/* line 293, ../sass/style.scss */
+.l-basket-product-headLine .fa:hover, .l-basket-product-secondLine .fa:hover {
+  border-color: #DF9E5E;
+}
+/* line 297, ../sass/style.scss */
+.l-basket-product-headLine .fa-eur, .l-basket-product-secondLine .fa-eur {
+  border: none;
+  margin: 0;
+}
+
+/* line 302, ../sass/style.scss */
+.l-basket-product-secondLine {
+  justify-content: space-between;
+}
+/* line 304, ../sass/style.scss */
+.l-basket-product-secondLine .fa-trash {
+  color: #ff8c80;
+  margin-left: 1rem;
+}
+
+/* line 309, ../sass/style.scss */
+.l-basket-product-nb {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+/* line 314, ../sass/style.scss */
+.l-basket-product-name {
+  flex-grow: 1;
+  font-size: 1.1rem;
+  padding: 0 1rem;
+}
+
+/* line 319, ../sass/style.scss */
+.l-basket-totalPrice {
+  align-self: center;
+  font-size: 1.2rem;
+  padding: 1rem 0;
+}
+/* line 323, ../sass/style.scss */
+.l-basket-totalPrice .fa {
+  font-size: 1rem;
+  color: #DF9E5E;
+  margin-left: 0.5rem;
+}
+
+/* line 329, ../sass/style.scss */
+.l-basket-validate-btn {
+  align-self: center;
+  padding: .5rem 1.5rem;
+  margin: 2rem 0;
+  border: 0.05rem solid #DF9E5E;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+/* line 335, ../sass/style.scss */
+.l-basket-validate-btn:hover {
+  background: #DF9E5E;
+  color: white;
+}
+
+/* line 341, ../sass/style.scss */
+.l-content {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  height: 100%;
+  overflow-y: scroll;
+  padding: 2rem;
+}
+
+/* line 352, ../sass/style.scss */
+.login-page, .register-page {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 2rem 3rem;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+/* line 360, ../sass/style.scss */
+form {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  position: relative;
+}
+/* line 365, ../sass/style.scss */
+form span {
+  color: #ff8f64;
+  max-width: 20rem;
+}
+
+/* line 371, ../sass/style.scss */
+.form-group {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+  color: black;
+}
+/* line 378, ../sass/style.scss */
+.form-group label {
+  margin-right: 1rem;
+}
+/* line 381, ../sass/style.scss */
+.form-group input {
+  padding: .25rem;
+  border: none;
+}
+/* line 384, ../sass/style.scss */
+.form-group input:focus {
+  outline: 0;
+}
+
+/* line 390, ../sass/style.scss */
+.form-btn {
+  margin-top: 1rem;
+}
+
+/* line 399, ../sass/style.scss */
+.products {
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 1;
+}
+
+/* line 405, ../sass/style.scss */
+.product {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  width: 10rem;
+  height: 10rem;
+  margin: 1rem;
+  position: relative;
+  color: black;
+  background-color: white;
+}
+/* line 416, ../sass/style.scss */
+.product:hover .product-description {
+  height: 5rem;
+}
+
+/* line 422, ../sass/style.scss */
+.product-picture {
+  align-self: center;
+  height: 6rem;
+  margin-top: 1rem;
+  width: auto;
+}
+
+/* line 429, ../sass/style.scss */
+.product-price {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+  color: black;
+}
+/* line 438, ../sass/style.scss */
+.product-price i {
+  padding: 0.25rem;
+  font-size: 0.7rem;
+}
+
+/* line 444, ../sass/style.scss */
+.product-name {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  z-index: 2;
+  background-color: #DF9E5E;
+  color: white;
+}
+
+/* line 455, ../sass/style.scss */
+.product-action {
+  color: white;
+}
+
+/* line 459, ../sass/style.scss */
+.product-details {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: white;
+}
+/* line 463, ../sass/style.scss */
+.product-details .product-content {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: auto;
+  height: auto;
+  padding: 1rem 2rem;
+  color: black;
+}
+/* line 472, ../sass/style.scss */
+.product-details .product-content .product-picture {
+  height: 12rem;
+}
+/* line 475, ../sass/style.scss */
+.product-details .product-content .product-name {
+  align-self: stretch;
+  font-size: 1.4rem;
+}
+/* line 479, ../sass/style.scss */
+.product-details .product-content .product-price {
+  position: static;
+  color: white;
+  font-size: 1.2rem;
+}
+/* line 483, ../sass/style.scss */
+.product-details .product-content .product-price i {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+/* line 488, ../sass/style.scss */
+.product-details .product-content .l-basket-product-nb {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  min-width: 8rem;
+  padding: 1rem 0;
+  font-size: 1.5rem;
+}
+/* line 496, ../sass/style.scss */
+.product-details .product-content .product-action {
+  color: #DF9E5E;
+  font-size: 1.3rem;
+  border: 1px solid transparent;
+  padding: .5rem 1rem;
+}
+/* line 501, ../sass/style.scss */
+.product-details .product-content .product-action:hover {
+  border: 1px solid #DF9E5E;
+}
+/* line 506, ../sass/style.scss */
+.product-details .product-description {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  min-width: 20rem;
+  padding: 1rem;
+  color: black;
+}
+/* line 513, ../sass/style.scss */
+.product-details .product-description .product-description-content {
+  display: flex;
+  flex-grow: 1;
+  font-size: 1.2rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+/* line 524, ../sass/style.scss */
+.general-errors {
+  color: #DF9E5E;
+  text-align: center;
+}
+
+/* line 529, ../sass/style.scss */
+.home-title {
+  padding: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* line 535, ../sass/style.scss */
+.home-description {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* line 540, ../sass/style.scss */
+.promotion-details {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+}
+/* line 546, ../sass/style.scss */
+.promotion-details:after {
+  content: '';
+  height: 0.05rem;
+  width: 90%;
+  position: absolute;
+  left: 5%;
+  bottom: 0;
+  background-color: #818181;
+}
