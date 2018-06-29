@@ -83,4 +83,8 @@ public class ProductOrderDAO {
             }
         }
     }
+
+    public void save(ProductOrderEntity pO) {
+        productOrderRepository.save(pO);
+    }
 }

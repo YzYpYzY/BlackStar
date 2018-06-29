@@ -99,7 +99,11 @@ public class BasketModel {
     }
 
     public int count(){
-        return basket.size();
+        int sum = 0;
+        for(BasketLineModel basketLine : basket.values()){
+            sum += basketLine.getQuantity();
+        }
+        return sum;
     }
 
     public double getPromotionAmount() {
@@ -124,5 +128,6 @@ public class BasketModel {
 
     public void empty() {
         this.basket.clear();
+        this.refreshComputes();
     }
 }

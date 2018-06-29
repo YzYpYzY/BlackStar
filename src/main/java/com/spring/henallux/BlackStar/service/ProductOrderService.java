@@ -72,6 +72,8 @@ public class ProductOrderService extends BaseService  {
     }
 
     public void valid(String username){
-        productOrderDAO.getOrderInPreparation(username).setState(OrderState.ORDER);
+        ProductOrderEntity pO = productOrderDAO.getOrderInPreparation(username);
+        pO.setState(OrderState.ORDER);
+        productOrderDAO.save(pO);
     }
 }

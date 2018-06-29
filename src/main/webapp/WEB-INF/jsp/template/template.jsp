@@ -14,7 +14,7 @@
 <div class="l-leftbar">
     <div class="l-brand">BlackStar<img src='<spring:url value="/images/coffee-logo.svg"/>' alt="logo" class="logo"></div>
         <sec:authorize access="!isAuthenticated()">
-        <a class="l-signIn" href="<spring:url value='/user/login'/>"><i class="fa fa-user-o" aria-hidden="true"></i><spring:message code="signIn"/>
+        <a class="l-signIn" href="<spring:url value='/user/login'/>"><i class="fa fa-user-o" aria-hidden="true"></i><spring:message code="login"/>
         </a>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
@@ -28,8 +28,8 @@
         <i class="fa fa-coffee" aria-hidden="true"><i class="nbProducts">${session.getBasket().count()}</i></i>
     </div>
     <div class="l-navigation">
-        <a href="<spring:url value='/home'/>" class="nav-link active"><spring:message code="menu-home"/></a>
-        <a href="<spring:url value='/products'/>" class="nav-link"><spring:message code="menu-products"/></a>
+        <a href="<spring:url value='/home'/>" ${session.getCurrentPage() == 'home' ? 'class="nav-link active" ' : 'class="nav-link"'}><spring:message code="menu-home"/></a>
+        <a href="<spring:url value='/products'/>" ${session.getCurrentPage() == 'products' ? 'class="nav-link active" ' : 'class="nav-link"'}><spring:message code="menu-products"/></a>
     </div>
     <spring:url var="localeFr" value="">
         <spring:param name="locale" value="fr"/>
@@ -72,7 +72,7 @@
 </c:if>
     <div class="l-basket-totalPrice">${String.format( "%.2f",session.getBasket().getRealPrice())}
         <i class="fa fa-eur" aria-hidden="true"></i></div>
-    <div class="l-basket-validate-btn"><spring:message code="basket-validate"/></div>
+    <a class="l-basket-validate-btn" href="<spring:url value='/products/valid'/>"><spring:message code="basket-validate"/></a>
 </div>
     <div class="l-content">
         <tiles:insertAttribute name = "main-content" />

@@ -50,6 +50,7 @@ body{
 }
 a{
   text-decoration: none;
+  color: white;
 }
 
 .l-leftbar{
@@ -390,10 +391,12 @@ form{
 .form-btn{
   @extend .btn;
   margin-top:1rem;
+  color: black;
 }
 
 .goToRegister{
   @extend .btn;
+  color:black;
 }
 
 .products{
@@ -552,4 +555,11 @@ form{
     bottom:0;
     background-color: #818181;
   }
+}
+.valid{
+  display: flex;
+  flex-flow: row wrap;
+  background-color: white;
+  height:5rem;
+  width:5rem;
 }

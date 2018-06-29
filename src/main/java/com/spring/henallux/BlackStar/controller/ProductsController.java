@@ -38,8 +38,7 @@ public class ProductsController extends BaseController {
             @ModelAttribute(value="session")Session session,
             Model model, Locale locale)
     {
-        session.setCurrentPage("products");
-        model.addAttribute("title","Products");
+        init(session,model,locale,"products");
         model.addAttribute("products", productsService.getProducts(locale));
         return "integrated:products";
     }
@@ -52,8 +51,9 @@ public class ProductsController extends BaseController {
             Locale locale)
     {
         session.setCurrentPage("products/details/" + productId);
-        model.addAttribute("title","Product");
-        model.addAttribute("product", productsService.getProduct(productId,locale));
+        ProductModel product = productsService.getProduct(productId,locale);
+        model.addAttribute("title", product.getLabel());
+        model.addAttribute("product", product);
         BasketLineModel basketLine = session.getBasket().getBasketLine(productId);
         int quantity = 0;
         if (basketLine !=null) quantity = basketLine.getQuantity();
@@ -99,33 +99,41 @@ public class ProductsController extends BaseController {
         if(authentication != null) user = (UserEntity) authentication.getPrincipal();
     }
 
-    @RequestMapping (value="/valid/",method = RequestMethod.GET)
+    @RequestMapping (value="/valid",method = RequestMethod.GET)
     public String valid(
-            @ModelAttribute(value="session")Session session
+            @ModelAttribute(value="session")Session session,
+            Locale locale,
+            Model model
     ){
-        return
+        String title = messageSource.getMessage("title.valid", null, locale);
+        model.addAttribute("title",title);
+        model.addAttribute("locale",locale.toString());
+        return "integrated:valid";
     }
-
+    @RequestMapping (value="/pay",method = RequestMethod.POST)
     public String pay(
             @ModelAttribute(value="session")Session session,
             Authentication authentication,
-            @PathVariable int stripeToken
+            @RequestParam("stripeToken") String stripeToken
     ){
+        initUser(authentication);
         // Set your secret key: remember to change this to your live secret key in production
         // See your keys here: https://dashboard.stripe.com/account/apikeys
-        Stripe.apiKey = "sk_test_BQokikJOvBiI2HlWgH4olfQ2";
+        Stripe.apiKey = "sk_test_TVLuTcHauh7vRlTyQ5KsuFTA";
 
         Map<String, Object> params = new HashMap<>();
-        params.put("amount", session.getBasket().getTotalAmount());
+        params.put("amount", Math.round(session.getBasket().getRealPrice()*100));
         params.put("currency", "eur");
         params.put("description", "Blackstar command");
         params.put("source", stripeToken);
         try{
             Charge charge = Charge.create(params);
+            session.getBasket().empty();
+            productOrderService.valid(user.getUsername());
         }catch(Exception e){
+            System.out.print(e.toString());
         }
-        session.getBasket().empty();
-        productOrderService.valid(user.getUsername());
+
         return  "redirect:/" + session.getCurrentPage();
     }
 }
