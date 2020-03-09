@@ -1,0 +1,33 @@
+version: "3.7"
+services:
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: blackstarmdp
+      MYSQL_DATABASE: blackstardb
+      MYSQL_USER: blackstarapp
+      MYSQL_PASSWORD: blackstarmdp
+    volumes:
+      - my-db:/var/lib/mysql
+      - ./sql-scripts/:/docker-entrypoint-initdb.d/
+    ports:
+      - "3306:3306"
+    networks:
+      - blackstarnet
+  admin:
+    image: adminer
+    ports:
+      - "4201:8080"
+    networks:
+      - blackstarnet
+  # app:
+  #   build: .
+  #   ports:
+  #     - "4200:4200"
+  #   depends_on:
+  #     - db
+volumes:
+  my-db:
+  sql-scripts:
+networks:
+  blackstarnet:
