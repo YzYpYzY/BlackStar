@@ -4,7 +4,7 @@
 -- * DB-MAIN version: 10.0.3              
 -- * Generator date: Aug 17 2017              
 -- * Generation date: Mon Nov 13 23:29:38 2017 
--- * LUN file: C:\Users\YzYpYzY\Desktop\DocToSend\Java Web.lun 
+-- * LUN file: C:\users\YzYpYzY\Desktop\DocToSend\Java Web.lun 
 -- * Schema: REL/1-1 
 -- ********************************************* 
 
@@ -19,159 +19,167 @@ use blackstardb;
 -- Tables Section
 -- _____________ 
 
-create table OrderLine (
-     Id int not null,
-     Quantity int not null,
-     PayedPrice decimal(10,2) not null,
-     ProductId int not null,
-     ProductOrderId int not null,
-     constraint ID_OrderLine_ID primary key (Id));
+create table orderline (
+     id int not null,
+     quantity int not null,
+     payedprice decimal(10,2) not null,
+     productid int not null,
+     productorderid int not null,
+     constraint id_orderline_id primary key (id));
 
-create table Description (
-     Id int not null,
-     Content varchar(300) not null,
-     ProductId int not null,
-     LanguageId int not null,
-     constraint ID_Description_ID primary key (Id));
+create table description (
+     id int not null,
+     content varchar(300) not null,
+     productid int not null,
+     languageid int not null,
+     constraint id_description_id primary key (id));
 
-create table Language (
-     Id int not null,
-     constraint ID_Language_ID primary key (Id));
+create table language (
+     id int not null,
+     isocode varchar(50) not null,
+     constraint id_language_id primary key (id));
 
-create table LanguageLabel (
-     Id int not null,
-     Content varchar(50) not null,
-     LanguageId int not null,
-     constraint ID_LanguageLabel_ID primary key (Id));
+create table languagelabel (
+     id int not null,
+     content varchar(50) not null,
+     languageid int not null,
+     constraint id_languagelabel_id primary key (id));
 
-create table ProductOrder (
-     Id int not null,
-     State int not null,
-     PromotionAmount decimal(10,2) not null,
-     Date date not null,
-     UserId int not null,
-     constraint ID_ProductOrder_ID primary key (Id));
+create table productorder (
+     id int not null,
+     state int not null,
+     promotionamount decimal(10,2) not null,
+     date date not null,
+     userid varchar(50) not null,
+     constraint id_productorder_id primary key (id));
 
-create table Product (
-     Id int not null,
-     Price decimal(10,2) not null,
-     Photo varchar(50) not null,
-     constraint ID_Product_ID primary key (Id));
+create table product (
+     id int not null,
+     price decimal(10,2) not null,
+     photo varchar(50) not null,
+     constraint id_product_id primary key (id));
 
-create table ProductLabel (
-     Id int not null,
-     Content varchar(50) not null,
-     ProductId int not null,
-     LanguageId int not null,
-     constraint ID_ProductLabel_ID primary key (Id));
+create table productlabel (
+     id int not null,
+     content varchar(50) not null,
+     productid int not null,
+     languageid int not null,
+     constraint id_productlabel_id primary key (id));
 
-create table User (
-     Id int not null,
-     Email varchar(50) not null,
-     PasswordHash varchar(50) not null,
-     DeliveredAddress varchar(200) not null,
-     Phone varchar(15) not null,
-     VATNum varchar(20),
-     Society varchar(50),
-     LanguageId int not null,
-     constraint ID_User_ID primary key (Id),
-     constraint SID_User_ID unique (Email));
+create table user (
+     username varchar(50) not null,
+     password varchar(250) not null,
+     authorities varchar(50) not null,
+     accountnonexpired boolean,
+     accountnonlocked boolean,
+     credentialsnonexpired boolean,
+     enabled boolean,
+     firstname varchar(50) not null,
+     lastname varchar(50) not null,
+     email varchar(50) not null,
+     deliveredaddress varchar(200) not null,
+     phone varchar(15) not null,
+     vatnum varchar(20),
+     society varchar(50),
+     languageid int not null,
+     constraint id_user_id primary key (username),
+     constraint Sid_user_id unique (email));
 
 
 -- Constraints Section
 -- ___________________ 
 
-alter table OrderLine add constraint FKProductLine_FK
-     foreign key (ProductId)
-     references Product (Id);
+alter table orderline add constraint FKproductLine_FK
+     foreign key (productid)
+     references product (id);
 
-alter table OrderLine add constraint FKProductOrder_FK
-     foreign key (ProductOrderId)
-     references ProductOrder (Id);
+alter table orderline add constraint FKproductorder_FK
+     foreign key (productorderid)
+     references productorder (id);
 
-alter table Description add constraint FKTradsDescription_FK
-     foreign key (ProductId)
-     references Product (Id);
+alter table description add constraint FKTradsdescription_FK
+     foreign key (productid)
+     references product (id);
 
-alter table Description add constraint FKTradDescription_FK
-     foreign key (LanguageId)
-     references Language (Id);
+alter table description add constraint FKTraddescription_FK
+     foreign key (languageid)
+     references language (id);
 
-alter table LanguageLabel add constraint FKTradLanguage_FK
-     foreign key (LanguageId)
-     references Language (Id);
+alter table languagelabel add constraint FKTradlanguage_FK
+     foreign key (languageid)
+     references language (id);
 
-alter table ProductOrder add constraint FKClient_FK
-     foreign key (UserId)
-     references User (Id);
+alter table productorder add constraint FKClient_FK
+     foreign key (userid)
+     references user (username);
 
-alter table ProductLabel add constraint FKTrads_FK
-     foreign key (ProductId)
-     references Product (Id);
+alter table productlabel add constraint FKTrads_FK
+     foreign key (productid)
+     references product (id);
 
-alter table ProductLabel add constraint FKTrad_FK
-     foreign key (LanguageId)
-     references Language (Id);
+alter table productlabel add constraint FKTrad_FK
+     foreign key (languageid)
+     references language (id);
 
-alter table User add constraint FKLanguagePref_FK
-     foreign key (LanguageId)
-     references Language (Id);
+alter table user add constraint FKlanguagePref_FK
+     foreign key (languageid)
+     references language (id);
 
 
 -- Index Section
 -- _____________ 
 
-create unique index ID_OrderLine_IND
-     on OrderLine (Id);
+create unique index id_orderline_IND
+     on orderline (id);
 
-create index FKProductLine_IND
-     on OrderLine (ProductId);
+create index FKproductLine_IND
+     on orderline (productid);
 
-create index FKProductOrder_IND
-     on OrderLine (ProductOrderId);
+create index FKproductorder_IND
+     on orderline (productorderid);
 
-create unique index ID_Description_IND
-     on Description (Id);
+create unique index id_description_IND
+     on description (id);
 
-create index FKTradsDescription_IND
-     on Description (ProductId);
+create index FKTradsdescription_IND
+     on description (productid);
 
-create index FKTradDescription_IND
-     on Description (LanguageId);
+create index FKTraddescription_IND
+     on description (languageid);
 
-create unique index ID_Language_IND
-     on Language (Id);
+create unique index id_language_IND
+     on language (id);
 
-create unique index ID_LanguageLabel_IND
-     on LanguageLabel (Id);
+create unique index id_languagelabel_IND
+     on languagelabel (id);
 
-create index FKTradLanguage_IND
-     on LanguageLabel (LanguageId);
+create index FKTradlanguage_IND
+     on languagelabel (languageid);
 
-create unique index ID_ProductOrder_IND
-     on ProductOrder (Id);
+create unique index id_productorder_IND
+     on productorder (id);
 
 create index FKClient_IND
-     on ProductOrder (UserId);
+     on productorder (userid);
 
-create unique index ID_Product_IND
-     on Product (Id);
+create unique index id_product_IND
+     on product (id);
 
-create unique index ID_ProductLabel_IND
-     on ProductLabel (Id);
+create unique index id_productlabel_IND
+     on productlabel (id);
 
 create index FKTrads_IND
-     on ProductLabel (ProductId);
+     on productlabel (productid);
 
 create index FKTrad_IND
-     on ProductLabel (LanguageId);
+     on productlabel (languageid);
 
-create unique index ID_User_IND
-     on User (Id);
+create unique index id_user_IND
+     on user (username);
 
-create unique index SID_User_IND
-     on User (Email);
+create unique index Sid_user_IND
+     on user (Email);
 
-create index FKLanguagePref_IND
-     on User (LanguageId);
+create index FKlanguagePref_IND
+     on user (languageid);
 

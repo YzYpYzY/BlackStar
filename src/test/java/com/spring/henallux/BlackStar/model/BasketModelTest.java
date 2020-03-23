@@ -1,36 +1,35 @@
 package com.spring.henallux.BlackStar.model;
 
+import com.spring.henallux.BlackStar.dataAccess.repository.ProductRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.HashMap;
+public class BasketModelTest {
 
-import static org.junit.Assert.*;
+    private BasketModel basket = new BasketModel();
+    @Autowired
+    private ProductRepository productRepository;
 
-// public class BasketModelTest {
+    @Before
+    public void setUp() throws Exception {
+        this.basket.addNewProduct( new ProductModel(1, 22), 1);
+        this.basket.addNewProduct( new ProductModel(2,200), 1);
+    }
 
-// private BasketModel basket = new BasketModel();
-
-// // @Before
-// // public void setUp() throws Exception {
-// // this.basket.addNewProduct( new ProductModel(1, 22), 1);
-// // this.basket.addNewProduct( new ProductModel(2,200), 1);
-// // }
-
-// // @Test
-// // public void TestTotalAmountAndPromotionCompute() throws Exception {
-// // Assert.assertEquals(222, this.basket.getTotalAmount(), 5);
-// // Assert.assertEquals(0, this.basket.getPromotionAmount(), 5);
-// // this.basket.addNewProduct( new ProductModel(3,100), 1);
-// // this.basket.addNewProduct( new ProductModel(4,30), 1);
-// // Assert.assertEquals(352, this.basket.getTotalAmount(), 5);
-// // Assert.assertEquals(35.2, this.basket.getPromotionAmount(), 5);
-// // this.basket.addNewProduct( new ProductModel(5,100), 1);
-// // this.basket.addNewProduct( new ProductModel(6,400), 1);
-// // this.basket.addNewProduct( new ProductModel(7,350), 1);
-// // Assert.assertEquals(1200, this.basket.getTotalAmount(), 5);
-// // Assert.assertEquals(240, this.basket.getPromotionAmount(), 5);
-// // }
-
-// }
+    @Test
+    public void TestTotalAmountAndPromotionCompute() throws Exception {
+        Assert.assertEquals(222, this.basket.getTotalAmount(), 5);
+        Assert.assertEquals(0, this.basket.getPromotionAmount(), 5);
+        this.basket.addNewProduct( new ProductModel(3,100), 1);
+        this.basket.addNewProduct( new ProductModel(4,30), 1);
+        Assert.assertEquals(352, this.basket.getTotalAmount(), 5);
+        Assert.assertEquals(35.2, this.basket.getPromotionAmount(), 5);
+        this.basket.addNewProduct( new ProductModel(5,100), 1);
+        this.basket.addNewProduct( new ProductModel(6,400), 1);
+        this.basket.addNewProduct( new ProductModel(7,350), 1);
+        Assert.assertEquals(1200, this.basket.getTotalAmount(), 5);
+        Assert.assertEquals(240, this.basket.getPromotionAmount(), 5);
+    }
+}

@@ -1,10 +1,11 @@
-﻿INSERT INTO Language (Id) 
-VALUES (1), (2);
+SET NAMES utf8;
+INSERT INTO language (id, isocode) 
+VALUES (1, 'fr'), (2, 'en');
 
-INSERT INTO LanguageLabel (Id, Content, LanguageId) 
-VALUES (1, 'Français', 1), (2, 'English', 2);
+INSERT INTO languagelabel (id, content, languageid)
+VALUES (1, 'Français', 1), (2, 'Anglais', 2);
 
-INSERT INTO Product (Id, Price, Photo) 
+INSERT INTO product (id, price, photo)
 VALUES 
 (1, 5.30, 'cd_efico'),
 (2,  4.25, 'cd_milano'),
@@ -22,7 +23,7 @@ VALUES
 (14, 50.99, 'pg_delice'),
 (15, 4.99, 'pur_arabica_eth');
 
-INSERT INTO ProductLabel (Id, Content, ProductId, LanguageId) 
+INSERT INTO productlabel (id, content, productid, languageid)
 VALUES 
 (1, 'Café en grains efico', 1, 1),
 (2, 'Café en grains milano', 2, 1),
@@ -55,7 +56,7 @@ VALUES
 (29, 'Gift basket delice', 14, 2),
 (30, 'Pure arabica capsule', 15, 2);
 
-INSERT INTO Description (Id, Content, ProductId, LanguageId) 
+INSERT INTO description (id, content, productid, languageid) 
 VALUES 
 (1, 'Café en grains efico', 1, 1),
 (2, 'Café en grains milano', 2, 1),

@@ -2,7 +2,6 @@ package com.spring.henallux.BlackStar.dataAccess.entity;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Set;
 
 @Entity
 @Table(name="language")

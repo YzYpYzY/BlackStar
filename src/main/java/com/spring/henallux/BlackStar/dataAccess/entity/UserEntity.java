@@ -7,29 +7,29 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-@Table(name="persistable_user")
+@Table(name="user")
 public class UserEntity implements UserDetails{
 
     @Id
-    @Column(name = "USERNAME")
+    @Column(name = "username")
     private String username;
 
-    @Column(name="PASSWORD")
+    @Column(name="password")
     private String password;
 
-    @Column(name="AUTHORITIES")
+    @Column(name="authorities")
     private String authorities = "";
 
-    @Column(name="NON_EXPIRED")
+    @Column(name="accountnonexpired")
     private Boolean accountNonExpired = true;
 
-    @Column(name="NON_LOCKED")
+    @Column(name="accountnonlocked")
     private Boolean accountNonLocked = true;
 
-    @Column(name="CREDENTIALS_NON_EXPIRED")
+    @Column(name="credentialsnonexpired")
     private Boolean credentialsNonExpired = true;
 
-    @Column(name="ENABLED")
+    @Column(name="enabled")
     private Boolean enabled = true;
 
     private String firstname;
