@@ -9,9 +9,11 @@
     </a>
     </c:forEach>
     <script>
-        $(".product-add").on("click",function(){
-            var url = $(this).data;
-            window.location = data;
-        })
+        window.onload = function() {
+            $(".product-add").on("click",function(){
+                var url = $(this).data;
+                window.location = data;
+            });
+        };
     </script>
 </div>
