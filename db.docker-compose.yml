@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+  db:
+    container_name: bs-db
+    labels:
+      - "traefik.enable=false"
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${BS_DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${BS_DB_NAME}
+      MYSQL_USER: ${BS_DB_USER}
+      MYSQL_PASSWORD: ${BS_DB_PASSWORD}
+    volumes:
+      - bs-db:/var/lib/mysql
+      - ./sql-scripts/:/docker-entrypoint-initdb.d/
+    ports:
+      - "${BS_DB_PORT}:3306"
+    networks:
+      web:
+  admin:
+    container_name: bs-db-admin
+    labels:
+      - "traefik.frontend.rule=Host:blackstar-db.yzypyzy.com"
+      - "traefik.frontend.port=${BS_DB_ADMIN_PORT}"
+    image: adminer
+    ports:
+      - "${BS_DB_ADMIN_PORT}:8080"
+    expose:
+      - ${BS_DB_ADMIN_PORT}
+    networks:
+      web:
+volumes:
+  bs-db:
+  bs-sql-scripts:
+networks:
+  web:

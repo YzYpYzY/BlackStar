@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  app:
+    container_name: bs-app
+    build: .
+    environment:
+      BS_DB_NAME: ${BS_DB_NAME}
+      BS_DB_USER: ${BS_DB_USER}
+      BS_DB_PASSWORD: ${BS_DB_PASSWORD}
+      BS_DB_HOST: ${BS_DB_HOST}
+      BS_DB_PORT: ${BS_DB_PORT}
+      BS_APP_PORT: ${BS_APP_PORT}
+    labels:
+      - "traefik.frontend.rule=Host:blackstar.yzypyzy.com"
+      - "traefik.frontend.port=${BS_APP_PORT}"
+    ports:
+      - "${BS_APP_PORT}:4200"
+    expose:
+      - ${BS_APP_PORT}
+    networks:
+      web:
+    external_links:
+      - db:bs-db
+networks:
+  web:
