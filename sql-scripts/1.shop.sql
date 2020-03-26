@@ -22,7 +22,7 @@ use blackstardb;
 create table orderline (
      id int not null,
      quantity int not null,
-     payedprice decimal(10,2) not null,
+     payedprice double not null,
      productid int not null,
      productorderid int not null,
      constraint id_orderline_id primary key (id));
@@ -47,15 +47,15 @@ create table languagelabel (
 
 create table productorder (
      id int not null,
-     state int not null,
-     promotionamount decimal(10,2) not null,
+     state varchar(10) not null,
+     promotionamount double not null,
      date date not null,
      userid varchar(50) not null,
      constraint id_productorder_id primary key (id));
 
 create table product (
      id int not null,
-     price decimal(10,2) not null,
+     price double not null,
      photo varchar(50) not null,
      constraint id_product_id primary key (id));
 

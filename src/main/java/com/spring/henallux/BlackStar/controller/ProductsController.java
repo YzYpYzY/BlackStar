@@ -134,6 +134,6 @@ public class ProductsController extends BaseController {
             System.out.print(e.toString());
         }
 
-        return  "redirect:/" + session.getCurrentPage();
+        return  "redirect:/products";
     }
 }

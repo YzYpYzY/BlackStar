@@ -1,7 +1,7 @@
 <%@ include file="./include/importTags.jsp" %>
 <div class="valid">
     ${ session.getBasket().getTotalAmount()}
-    <form action="/BlackStar/products/pay" method="POST">
+    <form action="/products/pay" method="POST">
         <script
                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-key="pk_test_RbN2ErBxpnq9l5ZksyzSWETL"

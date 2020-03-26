@@ -1,6 +1,7 @@
 <%@ include file="./include/importTags.jsp" %>
 <div class="login-page">
 <form:form id="login" name="login" class="login-form" method="POST"
+        action="/user/login"
            modelAttribute="userEntity">
     <div class="form-group">
     <form:label path="username" for="username"><spring:message code="login-email"/></form:label>
