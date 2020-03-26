@@ -8,6 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Pacifico" rel="stylesheet">
     <link type="text/css" href="<spring:url value='/css/stylesheets/style.css'/>" rel="Stylesheet">
+    <link rel="icon" href="<spring:url value="/images/favicon.ico"/>" />
     <title>${title}</title>
 </head>
 <body>
