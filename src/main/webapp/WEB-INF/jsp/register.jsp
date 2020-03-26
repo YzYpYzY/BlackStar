@@ -1,7 +1,7 @@
 <%@ include file="./include/importTags.jsp" %>
 <div class="register-page">
 <form:form id="register" name="register" class="register-form" method="POST"
-           action="/BlackStar/user/register"
+           action="/user/register"
            modelAttribute="registerModel">
     <div class="form-group">
         <form:label path="firstName" for="firstName"><spring:message code="register-firstname"/> *</form:label>
