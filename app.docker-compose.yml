@@ -23,3 +23,4 @@ services:
       - db:bs-db
 networks:
   web:
+    external: true

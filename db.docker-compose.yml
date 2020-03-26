@@ -34,3 +34,4 @@ volumes:
   bs-sql-scripts:
 networks:
   web:
+    external: true
