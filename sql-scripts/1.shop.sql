@@ -20,7 +20,7 @@ use blackstardb;
 -- _____________ 
 
 create table orderline (
-     id int not null,
+     id int not null AUTO_INCREMENT,
      quantity int not null,
      payedprice double not null,
      productid int not null,
@@ -28,25 +28,25 @@ create table orderline (
      constraint id_orderline_id primary key (id));
 
 create table description (
-     id int not null,
-     content varchar(300) not null,
+     id int not null AUTO_INCREMENT,
+     content varchar(700) not null,
      productid int not null,
      languageid int not null,
      constraint id_description_id primary key (id));
 
 create table language (
-     id int not null,
+     id int not null AUTO_INCREMENT,
      isocode varchar(50) not null,
      constraint id_language_id primary key (id));
 
 create table languagelabel (
-     id int not null,
+     id int not null AUTO_INCREMENT,
      content varchar(50) not null,
      languageid int not null,
      constraint id_languagelabel_id primary key (id));
 
 create table productorder (
-     id int not null,
+     id int not null AUTO_INCREMENT,
      state varchar(10) not null,
      promotionamount double not null,
      date date not null,
@@ -54,13 +54,13 @@ create table productorder (
      constraint id_productorder_id primary key (id));
 
 create table product (
-     id int not null,
+     id int not null AUTO_INCREMENT,
      price double not null,
      photo varchar(50) not null,
      constraint id_product_id primary key (id));
 
 create table productlabel (
-     id int not null,
+     id int not null AUTO_INCREMENT,
      content varchar(50) not null,
      productid int not null,
      languageid int not null,
