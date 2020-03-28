@@ -1,6 +1,6 @@
 <%@ include file="./include/importTags.jsp" %>
 <div class="valid">
-    <spring:message code="valid-total"/> ${ Math.round(session.getBasket().getRealPrice() * 100) } &euro;
+    <spring:message code="valid-total"/> ${ Math.round(session.getBasket().getRealPrice() ) } &euro;
     <form action="/products/pay" method="POST">
         <script
                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
