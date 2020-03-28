@@ -24,7 +24,8 @@ import java.io.IOException;
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final String LOGIN_REQUEST = "/user/login";
-    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/home",
+    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{
+            "/",
             "/css/stylesheets/*",
             "/images/*",
             "/images/coffees/*",
@@ -51,14 +52,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(AUTHORIZED_REQUESTS_ANYBODY).permitAll()
                 .antMatchers(LOGIN_REQUEST + "/**").permitAll()
                 .anyRequest().authenticated()
-
                 .and()
                 .formLogin()
                 .successHandler(new LoginSuccessCallback())
                 .loginPage(LOGIN_REQUEST)
-                .defaultSuccessUrl("/user/loginCallBack")
+                .defaultSuccessUrl("/")
                 .permitAll()
-
                 .and()
                 .logout()
                 .permitAll();

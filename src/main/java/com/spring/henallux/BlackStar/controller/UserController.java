@@ -7,8 +7,6 @@ import com.spring.henallux.BlackStar.service.ProductOrderService;
 import com.spring.henallux.BlackStar.service.ServiceResponse;
 import com.spring.henallux.BlackStar.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,14 +14,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.validation.Valid;
-
-import java.util.Locale;
-
-import static com.spring.henallux.BlackStar.configuration.ConstantConfiguration.CURRENTUSER;
-import static com.spring.henallux.BlackStar.configuration.ConstantConfiguration.SESSION;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -69,12 +61,6 @@ public class UserController extends BaseController{
             return "integrated:register";
         }
 
-        return "redirect:/home";
-    }
-
-    @RequestMapping (value="/loginCallBack", method = RequestMethod.GET)
-    public String loginCallBack (@ModelAttribute(value="session")Session session,Model model,Authentication authentication, Locale locale){
-        productOrderService.sync(session.getBasket(), (UserEntity) authentication.getPrincipal(),locale);
-        return "redirect:/home";
+        return "redirect:/";
     }
 }

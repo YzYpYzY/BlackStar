@@ -29,7 +29,7 @@
         <i class="fa fa-coffee" aria-hidden="true"><i class="nbProducts">${session.getBasket().count()}</i></i>
     </div>
     <div class="l-navigation">
-        <a href="<spring:url value='/home'/>" ${session.getCurrentPage() == 'home' ? 'class="nav-link active" ' : 'class="nav-link"'}><spring:message code="menu-home"/></a>
+        <a href="<spring:url value='/'/>" ${session.getCurrentPage() == 'home' ? 'class="nav-link active" ' : 'class="nav-link"'}><spring:message code="menu-home"/></a>
         <a href="<spring:url value='/products'/>" ${session.getCurrentPage() == 'products' ? 'class="nav-link active" ' : 'class="nav-link"'}><spring:message code="menu-products"/></a>
     </div>
     <spring:url var="localeFr" value="">
