@@ -7,16 +7,16 @@
     <form:label path="username" for="username"><spring:message code="login-email"/></form:label>
     <form:input path="username" type="text"  name="username" id="username"/>
     </div>
-        <form:errors path="username" />
+    <form:errors path="username" />
     <div class="form-group">
         <form:label path="password" for="password"><spring:message code="login-password"/></form:label>
         <form:input path="password" type="password"  name="password" id="password"/>
     </div>
-        <form:errors path="password" />
-    <form:button class="form-btn"><spring:message code="login"/></form:button>
-    <c:if test="${ generalErrors != null}">
-        <div class="general-errors">${generalErrors}</div>
+    <form:errors path="password" />
+    <c:if test="${ param.error != null}">
+        <div class="general-errors"><spring:message code="login.error"/></div>
     </c:if>
+    <form:button class="form-btn"><spring:message code="login"/></form:button>
 </form:form>
 
 <a href="<spring:url value='/user/register'/>" class="goToRegister">Register</a>

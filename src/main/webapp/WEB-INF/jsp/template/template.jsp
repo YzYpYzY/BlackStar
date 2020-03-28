@@ -70,10 +70,14 @@
         <div>${String.format( "%.2f",session.getBasket().getTotalAmount())}</div>
         <div> <spring:message code="promotion"/> : ${String.format( "%.2f",session.getBasket().getPromotionAmount())}</div>
     </div>
-</c:if>
+    </c:if>
     <div class="l-basket-totalPrice">${String.format( "%.2f",session.getBasket().getRealPrice())}
-        <i class="fa fa-eur" aria-hidden="true"></i></div>
-    <a class="l-basket-validate-btn" href="<spring:url value='/products/valid'/>"><spring:message code="basket-validate"/></a>
+        <i class="fa fa-eur" aria-hidden="true"></i>
+     </div>
+     <c:if test="${ session.getBasket().getTotalAmount() != 0}">
+        <a class="l-basket-validate-btn" href="<spring:url value='/products/valid'/>"><spring:message code="basket-validate"/></a>
+     </c:if>
+
 </div>
     <div class="l-content">
         <tiles:insertAttribute name = "main-content" />

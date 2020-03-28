@@ -7,6 +7,7 @@ html {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-family: 'Open Sans Condensed', sans-serif;
+  background: black;
 }
 
 *,
@@ -30,7 +31,7 @@ body{
   align-items: stretch;
   height:100%;
   margin:0;
-  background: url("../../images/wallpaper.png") no-repeat top left;
+  background: url("../../images/wallpaper.png") no-repeat top left black;
   color:white;
 }
 
@@ -214,20 +215,20 @@ a{
   flex-shrink:0;
   width:13rem;
   background-color: #2e2e2e;
-  transition: width ease 1s;
+  transition: width ease .5s;
   overflow-x: hidden;
-  .l-basket-title{animation: fadein 1s linear 0s 1;}
-  .l-basket-products{animation: fadein 1s linear 0s 1;}
-  .l-basket-validate-btn{animation: fadein 1s linear 0s 1;}
-  .promotion-details{animation: fadein 1s linear 0s 1;}
-  .l-basket-totalPrice{animation: fadein 1s linear 0s 1;}
+  .l-basket-title{animation: fadein .5s linear 0s 1;}
+  .l-basket-products{animation: fadein .5s linear 0s 1;}
+  .l-basket-validate-btn{animation: fadein .5s linear 0s 1;}
+  .promotion-details{animation: fadein .5s linear 0s 1;}
+  .l-basket-totalPrice{animation: fadein .5s linear 0s 1;}
   &.collapse{
     width:0;
-    .l-basket-title{animation: fadeout 1s linear 0s 1;}
-    .l-basket-products{animation: fadeout 1s linear 0s 1;}
-    .l-basket-validate-btn{animation: fadeout 1s linear 0s 1;}
-    .promotion-details{animation: fadeout 1s linear 0s 1;}
-    .l-basket-totalPrice{animation: fadeout 1s linear 0s 1;}
+    .l-basket-title{animation: fadeout .3s linear 0s 1;}
+    .l-basket-products{animation: fadeout .3s linear 0s 1;}
+    .l-basket-validate-btn{animation: fadeout .3s linear 0s 1;}
+    .promotion-details{animation: fadeout .3s linear 0s 1;}
+    .l-basket-totalPrice{animation: fadeout .3s linear 0s 1;}
   }
 }
 .l-basket-title{
@@ -346,8 +347,9 @@ a{
   align-items: center;
   flex-grow:1;
   height: 100%;
-  overflow-y:scroll;
+  overflow-y: 100%;
   padding:2rem;
+  animation: fadein .5s linear 0s 1;
 }
 
 .login-page, .register-page{
@@ -462,15 +464,15 @@ form{
 .product-details {
   display: flex;
   flex-flow: row wrap;
-  background-color: white;
   .product-content {
     display: flex;
     flex-flow: column;
     align-items: center;
-    width: auto;
+    width: 100%;
     height: auto;
-    padding: 1rem 2rem;
+    padding: 0;
     color: black;
+    background-color: white;
 
     .product-picture {
       height: 12rem;
@@ -478,6 +480,7 @@ form{
     .product-name {
       align-self: stretch;
       font-size: 1.4rem;
+      padding: 1rem 2rem;
     }
     .product-price {
       position: static;
@@ -511,13 +514,15 @@ form{
     flex-flow:column;
     justify-content: space-between;
     min-width: 20rem;
-    padding: 1rem;
+    padding: 1rem 2rem;
     color: black;
+     background-color: white;
+
     .product-description-content{
       display: flex;
 
       flex-grow: 1;
-      font-size: 1.2rem;
+      font-size: 1rem;
       text-align: center;
       justify-content: center;
       align-items: center;
@@ -558,8 +563,15 @@ form{
 }
 .valid{
   display: flex;
-  flex-flow: row wrap;
-  background-color: white;
-  height:5rem;
-  width:5rem;
+  flex-flow: column;
+  background: rgba(255, 255, 255, 0.78);
+  padding: 2rem;
+  color: black;
+  .stripe-button-el{
+        margin-top: 1rem;
+        background: $f-c;
+        span{
+            background: transparent;
+        }
+  }
 }
