@@ -7,7 +7,6 @@ html {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-family: 'Open Sans Condensed', sans-serif;
-  background: black;
 }
 
 *,
@@ -31,7 +30,7 @@ body{
   align-items: stretch;
   height:100%;
   margin:0;
-  background: url("../../images/wallpaper.png") no-repeat top left black;
+  background: url("../../images/wallpaper.png") no-repeat top left;
   color:white;
 }
 
