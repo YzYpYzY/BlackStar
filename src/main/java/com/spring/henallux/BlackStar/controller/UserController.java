@@ -7,6 +7,7 @@ import com.spring.henallux.BlackStar.service.ProductOrderService;
 import com.spring.henallux.BlackStar.service.ServiceResponse;
 import com.spring.henallux.BlackStar.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.Locale;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -25,6 +27,8 @@ public class UserController extends BaseController{
     private UsersService usersService;
     @Autowired
     private ProductOrderService productOrderService;
+    @Autowired
+    MessageSource messageSource;
 
     @RequestMapping (value="/login", method = RequestMethod.GET)
     public String login (@ModelAttribute(value="session")Session session,Model model){
@@ -42,10 +46,10 @@ public class UserController extends BaseController{
 
 
     @RequestMapping (value="/register", method = RequestMethod.POST)
-    public String register (@ModelAttribute(value="session")Session session,Model model, @Valid @ModelAttribute(value="registerModel") RegisterModel registerModel, final BindingResult errors){
+    public String register (@ModelAttribute(value="session")Session session,Model model, @Valid @ModelAttribute(value="registerModel") RegisterModel registerModel, final BindingResult errors, Locale locale){
         if(!registerModel.getPassword().equals(registerModel.getPasswordConfirm())) {
-            String[] errorCodes = new String[]{"PasswordConfirm.NotSame"};
-            errors.addError(new FieldError("DifferentPasswordError", "passwordConfirm", null, false , errorCodes,null,""));
+            String message = messageSource.getMessage("validation.passwordConfirmNotSame", null, locale);
+            errors.addError(new FieldError("DifferentPasswordError", "passwordConfirm", registerModel.getPasswordConfirm(), false , null,null, message));
         }else{
             errors.recordSuppressedField("DifferentPasswordError");
         }
