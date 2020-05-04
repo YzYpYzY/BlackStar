@@ -21,8 +21,8 @@ use blackstardb;
 
 create table orderline (
      id int not null AUTO_INCREMENT,
-     quantity int not null,
-     payedprice double not null,
+     quantity int not null constraint orderline_positive_quantity check (quantity > 0),
+     payedprice double not null constraint orderline_positive_payedPrice check (payedPrice > 0),
      productid int not null,
      productorderid int not null,
      constraint id_orderline_id primary key (id));
@@ -36,7 +36,7 @@ create table description (
 
 create table language (
      id int not null AUTO_INCREMENT,
-     isocode varchar(50) not null,
+     isocode varchar(50) not null UNIQUE,
      constraint id_language_id primary key (id));
 
 create table languagelabel (
@@ -48,14 +48,14 @@ create table languagelabel (
 create table productorder (
      id int not null AUTO_INCREMENT,
      state varchar(10) not null,
-     promotionamount double not null,
+     promotionamount double not null constraint productorder_positive_promotionamount check (promotionamount >= 0),
      date date not null,
      userid varchar(50) not null,
      constraint id_productorder_id primary key (id));
 
 create table product (
      id int not null AUTO_INCREMENT,
-     price double not null,
+     price double not null constraint product_positive_price check (price > 0),
      photo varchar(50) not null,
      constraint id_product_id primary key (id));
 
