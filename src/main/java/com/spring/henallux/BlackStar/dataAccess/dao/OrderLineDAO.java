@@ -53,7 +53,7 @@ public class OrderLineDAO {
         ProductOrderEntity order = productOrderRepository.findFirst(username, OrderState.PREPARE);
         for (OrderLineEntity orderLine : order.getOrderLines()){
             if(orderLine.getProduct().getId() == productId){
-                orderLine.setQuantity(newQuantity);
+                orderLine.setQuantity(orderLine.getQuantity() + newQuantity);
                 orderLineRepository.save(orderLine);
                 return;
             }
