@@ -71,9 +71,10 @@ public class ProductOrderService extends BaseService  {
         productOrderDAO.refreshTrad(basket,  locale);
     }
 
-    public void valid(String username){
+    public void valid(double promotionAmount, String username){
         ProductOrderEntity pO = productOrderDAO.getOrderInPreparation(username);
         pO.setState(OrderState.ORDER);
+        pO.setPromotionamount(promotionAmount);
         productOrderDAO.save(pO);
     }
 }

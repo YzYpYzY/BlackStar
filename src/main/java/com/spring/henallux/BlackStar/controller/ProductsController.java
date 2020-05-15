@@ -128,8 +128,8 @@ public class ProductsController extends BaseController {
         params.put("source", stripeToken);
         try{
             Charge charge = Charge.create(params);
+            productOrderService.valid(session.getBasket().getPromotionAmount(), user.getUsername());
             session.getBasket().empty();
-            productOrderService.valid(user.getUsername());
         }catch(Exception e){
             System.out.print(e.toString());
         }
