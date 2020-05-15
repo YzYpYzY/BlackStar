@@ -3,6 +3,8 @@ package com.spring.henallux.BlackStar.configuration;
 import com.spring.henallux.BlackStar.dataAccess.entity.UserEntity;
 import com.spring.henallux.BlackStar.model.Session;
 import com.spring.henallux.BlackStar.service.ProductOrderService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -36,7 +38,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{"/admin"};
 
     private UserDetailsService userDetailsServiceImpl;
-
+    private Logger logger = LoggerFactory.getLogger(LoginSuccessCallback.class);
+    @Autowired
+    private ProductOrderService productOrderService;
     @Autowired
     public WebSecurityConfiguration(UserDetailsService userDetailsServiceImpl){
         this.userDetailsServiceImpl = userDetailsServiceImpl;
@@ -45,6 +49,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.csrf().disable();
+        logger.info("CONFIGURE SUCCESS --------------------------");
 
         http
                 .authorizeRequests()
@@ -54,9 +59,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .successHandler(new LoginSuccessCallback())
+                .successHandler(new LoginSuccessCallback(productOrderService))
                 .loginPage(LOGIN_REQUEST)
-                .defaultSuccessUrl("/")
                 .permitAll()
                 .and()
                 .logout()
@@ -69,12 +73,17 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     public class LoginSuccessCallback extends SavedRequestAwareAuthenticationSuccessHandler{
-
-        @Autowired
+        private Logger logger = LoggerFactory.getLogger(LoginSuccessCallback.class);
         private ProductOrderService productOrderService;
+
+        public LoginSuccessCallback(ProductOrderService productOrderService){
+            super();
+            this.productOrderService = productOrderService;
+        }
 
         @Override
         public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
+            logger.info("AUTH SUCCESS --------------------------");
             Session session = (Session) request.getSession().getAttribute(ConstantConfiguration.SESSION);
             productOrderService.sync(session.getBasket(), (UserEntity) authentication.getPrincipal(),request.getLocale());
             super.onAuthenticationSuccess(request, response, authentication);
