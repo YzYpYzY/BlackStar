@@ -13,7 +13,7 @@ import java.util.Locale;
 @RequestMapping(value = "/")
 public class HomeController extends BaseController{
 
-    @RequestMapping (method = RequestMethod.GET)
+    @RequestMapping (value={ "/home", "/"}, method = RequestMethod.GET)
     public String home (@ModelAttribute(value="session")Session session,Model model, Locale locale){
         init(session,model,locale,"home");
         return "integrated:home";

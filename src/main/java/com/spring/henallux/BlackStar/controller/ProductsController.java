@@ -97,6 +97,7 @@ public class ProductsController extends BaseController {
 
     private void initUser(Authentication authentication) {
         if(authentication != null) user = (UserEntity) authentication.getPrincipal();
+        else user = null;
     }
 
     @RequestMapping (value="/valid",method = RequestMethod.GET)
