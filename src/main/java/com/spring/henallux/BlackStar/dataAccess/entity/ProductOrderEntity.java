@@ -27,7 +27,9 @@ public class ProductOrderEntity {
     @OneToMany(mappedBy="order", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private Collection<OrderLineEntity> orderLines;
 
-    public ProductOrderEntity(){}
+    public ProductOrderEntity(){
+        orderLines = new ArrayList<OrderLineEntity>();
+    }
 
     public int getId() {
         return id;
@@ -50,7 +52,7 @@ public class ProductOrderEntity {
     }
 
     public void setPromotionamount(double promotionamount) {
-        this.promotionamount = promotionamount;
+        this.promotionamount = Math.round(100 * promotionamount) / 100;
     }
 
     public Date getDate() {
@@ -90,6 +92,7 @@ public class ProductOrderEntity {
         while (basketIt.hasNext()) {
             Map.Entry entry = (Map.Entry) basketIt.next();
             OrderLineEntity oLine = (OrderLineEntity) entry.getValue();
+            oLine.setOrder(this);
             orderLines.add(oLine);
         }
     }
