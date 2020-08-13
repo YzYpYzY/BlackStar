@@ -36,7 +36,7 @@ create table description (
 
 create table language (
      id int not null AUTO_INCREMENT,
-     isocode varchar(50) not null UNIQUE,
+     isocode varchar(2) not null UNIQUE,
      constraint id_language_id primary key (id));
 
 create table languagelabel (
